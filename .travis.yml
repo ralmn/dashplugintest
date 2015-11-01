@@ -9,12 +9,12 @@ install:
 - echo "$TRAVIS_COMMIT"
 #- npm install -g gulp # You can install gulp (or other build sytem)
 
-#script:
-#- gulp  #Build your project
+script:
+- echo "script" #gulp  #Build your project
 
 after_success:
-- rm -r node_modules
-- npm install --prod
+#- rm -r node_modules
+#- npm install --prod
 - PWDBD=$(pwd)
 - cd ..
 - echo "$PWDBD"
