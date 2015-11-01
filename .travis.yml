@@ -9,7 +9,7 @@ install:
 - echo "$TRAVIS_COMMIT"
 #- npm install -g gulp # You can install gulp (or other build sytem)
 
-script:
+#script:
 #- gulp  #Build your project
 
 after_success:
