@@ -19,7 +19,7 @@ after_success:
 - cd ..
 - echo "$PWDBD"
 - zip -r build.zip $(basename $PWDBD) --exclude=*.git*
-- REPO="plugin test"
+- REPO="plugin%20test"
 - BRANCH=$([ -n "$TRAVIS_TAG" ] && echo "tag" || echo "$TRAVIS_BRANCH")
 - COMMIT=$([ -n "$TRAVIS_TAG" ] && echo "$TRAVIS_TAG" || echo "$TRAVIS_COMMIT")
 - echo "http://local.ralmn.pw:5556/repo/$REPO/$BRANCH/$COMMIT/newBuild"
