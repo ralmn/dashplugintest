@@ -6,22 +6,21 @@ node_js:
 - '0.12'
 
 install:
-- echo "$TRAVIS_COMMIT"
+- npm install
 #- npm install -g gulp # You can install gulp (or other build sytem)
 
 script:
-- echo "script" #gulp  #Build your project
+- echo "script ok " #gulp no-watch  #Build your project
 
 after_success:
-#- rm -r node_modules
-#- npm install --prod
+- rm -r node_modules
+- npm install --prod
 - PWDBD=$(pwd)
 - cd ..
 - echo "$PWDBD"
 - zip -r build.zip $(basename $PWDBD) --exclude=*.git*
-- REPO="ralmn_dashplugintest"
+- REPO="plugintest"
 - BRANCH=$([ -n "$TRAVIS_TAG" ] && echo "tag" || echo "$TRAVIS_BRANCH")
 - COMMIT=$([ -n "$TRAVIS_TAG" ] && echo "$TRAVIS_TAG" || echo "$TRAVIS_COMMIT")
 - echo "http://local.ralmn.pw:5556/repo/$REPO/$BRANCH/$COMMIT/newBuild"
-- curl -i -F authkey="$REPOAUTH" -F filedata=@build.zip "http://local.ralmn.pw:5556/repo/$REPO/$BRANCH/$COMMIT/newBuild"
-
+- curl -v -F authkey="$REPOAUTH" -F filedata=@build.zip "http://local.ralmn.pw:5556/repo/$REPO/$BRANCH/$COMMIT/newBuild"
